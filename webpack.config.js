@@ -1,5 +1,6 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var path = require('path');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
     mode: 'development',
@@ -7,7 +8,12 @@ module.exports = {
     output: {
         filename: '[contenthash].js'
     },
-    plugins: [new HtmlWebpackPlugin({
+    devtool: 'inline-source-map',
+    devServer: {
+        contentBase: './dist',
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
         title: '老丁',
         template: 'src/assets/index.html'
     })],
